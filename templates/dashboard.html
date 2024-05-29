@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+<a href="{{ url_for('create_ticket') }}">Create Ticket</a>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Note</th>
+            <th>Group</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ ticket.id }}</td>
+            <td>{{ ticket.status }}</td>
+            <td>{{ ticket.note }}</td>
+            <td>{{ ticket.group.name }}</td>
+            <td><a href="{{ url_for('ticket', id=ticket.id) }}">View</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

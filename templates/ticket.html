@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Ticket {{ ticket.id }}</h2>
+<form method="POST" action="{{ url_for('ticket', id=ticket.id) }}">
+    <div>
+        <label for="status">Status:</label>
+        <input type="text" name="status" id="status" value="{{ ticket.status }}" required>
+    </div>
+    <div>
+        <label for="note">Note:</label>
+        <textarea name="note" id="note" required>{{ ticket.note }}</textarea>
+    </div>
+    <div>
+        <button type="submit">Update</button>
+    </div>
+</form>
+{% endblock %}
